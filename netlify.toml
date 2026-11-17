@@ -1,0 +1,21 @@
+# Netlify configuration for Hassan Rural Health frontend
+[build]
+  base    = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Single-page app: route all page navigations to index.html
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# When your Django backend is deployed (e.g. on Railway/Render), uncomment and update:
+# [[redirects]]
+#   from   = "/api/*"
+#   to     = "https://your-backend.example.com/api/:splat"
+#   status = 200
+#   force  = true
