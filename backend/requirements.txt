@@ -1,0 +1,6 @@
+Django>=6.1,<7
+djangorestframework>=3.17
+django-cors-headers>=4.9
+djangorestframework-simplejwt>=5.5
+cryptography>=46
+gunicorn>=22

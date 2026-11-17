@@ -1,0 +1,22 @@
+# Netlify settings for the frontend only. Netlify cannot run the Django backend.
+[build]
+  base    = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# 1) Send API calls to wherever the Django backend is hosted.
+#    Replace the URL below with your backend address (no trailing slash), then redeploy.
+[[redirects]]
+  from   = "/api/*"
+  to     = "https://YOUR-BACKEND-URL/api/:splat"
+  status = 200
+  force  = true
+
+# 2) Single-page app: every other path serves index.html (fixes 404 on /login, /admin, /s/<token> ...)
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
